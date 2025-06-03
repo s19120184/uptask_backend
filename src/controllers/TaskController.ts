@@ -12,7 +12,7 @@ export class TaskController {
       // await req.project.save()
       //evitamos los dos  await y guardamos de una sola vez
       await Promise.allSettled([task.save(), req.project.save()]);
-      res.send("Tarea creada Correctamente");
+      res.json("Tarea creada Correctamente");
     } catch (error) {
       res.status(500).json({ message: "Hubo un error: " });
     }
@@ -48,7 +48,7 @@ export class TaskController {
       req.task.description = req.body.description;
       await req.task.save();
 
-      res.send("Tasks updated successfully");
+      res.json("Tasks updated successfully");
     } catch (error) {
       res.status(500).json({ message: "Hubo un error: " });
     }
@@ -62,7 +62,7 @@ export class TaskController {
       );
       //se elimina  la tarea posteriormente el projecto se guarda con la acutalizacion de las tareas
       await Promise.allSettled([req.task.deleteOne(), req.project.save()]);
-      res.send("Tasks delete successfully");
+      res.json("Tasks delete successfully");
     } catch (error) {
       res.status(500).json({ message: "Hubo un error: " });
     }
@@ -82,7 +82,7 @@ export class TaskController {
 
 
       await req.task.save();
-      res.send("tarea Actualizada");
+      res.json("tarea Actualizada");
     } catch (error) {
       res.status(500).json({ message: "Hubo un error: " });
     }

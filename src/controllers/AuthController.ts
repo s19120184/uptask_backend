@@ -34,7 +34,7 @@ export class AuthController{
 
             await Promise.allSettled([user.save(), token.save()] )
 
-            res.send( 'Cuenta  creada , revisa tu email para confirmarla')
+            res.json( 'Cuenta  creada , revisa tu email para confirmarla')
             
            } catch (error) {
             res.status(500).json({ error: "Hubo un Error" })
@@ -56,7 +56,7 @@ export class AuthController{
             user.confirmed = true
 
             await Promise.allSettled([user.save(), tokenExixt.deleteOne()])
-            res.send("Cuenta confirmada correctamente")
+            res.json("Cuenta confirmada correctamente")
 
             
         } catch (error) {
@@ -79,7 +79,7 @@ export class AuthController{
             }
 
             const token = genrateJWT({id: req.user.id})
-            res.send(token)
+            res.json(token)
             
             
         } catch (error) {
@@ -116,7 +116,7 @@ export class AuthController{
 
          await Promise.allSettled([user.save(), token.save()] )
 
-         res.send( 'Se envio un nuevo token a tu correo')
+         res.json( 'Se envio un nuevo token a tu correo')
          
         } catch (error) {
          res.status(500).json({ error: "Hubo un Error" })
@@ -147,7 +147,7 @@ export class AuthController{
      token:token.token
     })
 
-     res.send( 'Revisa tu email para instrucciones')
+     res.json( 'Revisa tu email para instrucciones')
      
     } catch (error) {
      res.status(500).json({ error: "Hubo un Error" })
@@ -165,7 +165,7 @@ static validateToken =async (req:Request, res:Response)=>{
             return res.status(404).json({ error: error.message })
         }
         
-       res.send("Token válido , Define tu nuevo password")
+       res.json("Token válido , Define tu nuevo password")
     
     } catch (error) {
         res.status(500).json({ error:"Hubo un Error"})
@@ -189,7 +189,7 @@ static updatePasswordWithToken =async (req:Request, res:Response)=>{
 
         await Promise.allSettled([user.save() , tokenExixt.deleteOne()])
         
-       res.send("El password se modifico correctamente")
+       res.json("El password se modifico correctamente")
     
      } catch (error) {
         res.status(500).json({ error:"Hubo un Error"})
@@ -215,7 +215,7 @@ static updatedProfile = async (req:Request, res:Response)=>{
 
     try {
         await req.user.save()
-        res.send('Perfil actualizado Correctamente')
+        res.json('Perfil actualizado Correctamente')
         
     } catch (error) {
         res.status(500).send("Hubo un error")
@@ -236,7 +236,7 @@ static updateCurrentUserPassword = async (req:Request, res:Response)=>{
     try{
         user.password =await hashPassword(password)
         await user.save()
-        res.send('El password se modifico correctamente')
+        res.json('El password se modifico correctamente')
     }catch(error){
         res.status(500).send('Hubo un error')
     }
@@ -258,7 +258,7 @@ static checkPassword = async (req:Request, res:Response)=>{
         res.status(500).send('Hubo un error')
     }
 
-    res.send('Password Correcto')
+    res.json('Password Correcto')
 }
 
 }

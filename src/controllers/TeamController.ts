@@ -45,7 +45,7 @@ export class TeamMemberController {
 
         req.project.team.push(user.id)
         await req.project.save()
-        res.send('Usuario agregado correctamente')
+        res.json('Usuario agregado correctamente')
 
     } catch (error) {
         res.status(500).json({error: "Hubo un error"});
@@ -61,7 +61,7 @@ export class TeamMemberController {
 
             req.project.team= req.project.team.filter(team => team.toString() !== userId)
             await req.project.save()
-            res.send("El usuario esta fuera del equipo")
+            res.json("El usuario esta fuera del equipo")
 
      }
 

@@ -11,7 +11,7 @@ export class ProjectController {
     try {
       //usamos las funciones del ORM mongoose
       await project.save();
-      res.send("Projecto creado correctamente");
+      res.json("Projecto creado correctamente");
 
     } catch (error) {
       console.log(error);
@@ -67,7 +67,7 @@ export class ProjectController {
       req.project.description = req.body.description;
 
       await req.project.save();
-      res.send("Proyecto actalizado");
+      res.json("Proyecto actalizado");
     } catch (error) {
       console.log(error);
     }
@@ -80,7 +80,7 @@ export class ProjectController {
 
       //eliminamos el projecto
       await req.project.deleteOne();
-      res.send("Proyecto eliminado");
+      res.json("Proyecto eliminado");
     } catch (error) {
       console.log(error);
     }

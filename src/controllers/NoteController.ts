@@ -22,7 +22,7 @@ export class NoteController{
         try {
             //gurdamos la actualizacion de la tarea y la nueva nota
             await Promise.allSettled([req.task.save(),note.save()])
-            res.send("Nota creada correctamente")
+            res.json("Nota creada correctamente")
             
         } catch (error) {
             res.status(500).json({ error: "Hubo un error" })
@@ -56,7 +56,7 @@ export class NoteController{
          try {
             await Promise.allSettled([req.task.save(), note.deleteOne()])
             
-            res.send('Nota eliminada')
+            res.json('Nota eliminada')
             
          } catch (error) {
             res.status(500).json({ error: "Hubo un error" })
