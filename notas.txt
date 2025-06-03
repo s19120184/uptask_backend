@@ -1,0 +1,46 @@
+instalar las dependecias de cors 
+npm i cors
+npm i -D @types/cors
+
+
+solucionar error de cors para poder trabajar con la api en el backend 
+
+"scripts": {
+    "dev": "nodemon --exec ts-node src/index.ts",
+    "dev:api": "nodemon --exec ts-node src/index.ts --api"// agregamos 
+  },
+
+  export const corsConfig: CorsOptions= {
+
+    origin: function(origin, callback) {
+
+          const whitelist =[
+               process.env.FRONTEND_URL
+          ]
+
+          if(process.argv[2]==='--api'){//agregamos esta condiccinal
+            whitelist.push(undefined)
+          }
+
+          if(whitelist.includes(origin)){
+            callback(null, true)
+          }else{
+            callback(new Error("Error de CORS"))
+          }
+}
+}
+
+ejecutamos npm run dev:api 
+
+dependencia para hashear los passwords 
+    npm i bcrypt
+    npm i -D @types/bcrypt
+
+
+dependecias para enviar email 
+  npm i nodemailer
+  npm i @types/nodemailer
+
+
+Dependencia para crear un jsonwebtoken
+ npm i jsonwebtoken
