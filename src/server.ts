@@ -17,7 +17,7 @@ const app = express();
 // usar la configuracion de Cors
 app.use(cors(corsConfig))
 
-//loggin 
+//loggin  
 app.use(morgan('dev'))
 
 //abilitamos la lectura de JSON lee los datos del formulario

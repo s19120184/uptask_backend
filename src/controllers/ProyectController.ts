@@ -14,7 +14,7 @@ export class ProjectController {
       res.json("Projecto creado correctamente");
 
     } catch (error) {
-      console.log(error);
+      (error);
     }
   };
 
@@ -30,7 +30,7 @@ export class ProjectController {
       });
       res.json(projects);
     } catch (error) {
-      console.log(error);
+      (error);
     }
   };
 
@@ -53,7 +53,7 @@ export class ProjectController {
 
       res.json(project);
     } catch (error) {
-      console.log(error);
+      (error);
     }
   };
 
@@ -69,7 +69,7 @@ export class ProjectController {
       await req.project.save();
       res.json("Proyecto actalizado");
     } catch (error) {
-      console.log(error);
+      (error);
     }
   };
 
@@ -82,7 +82,7 @@ export class ProjectController {
       await req.project.deleteOne();
       res.json("Proyecto eliminado");
     } catch (error) {
-      console.log(error);
+      (error);
     }
   };
 }
