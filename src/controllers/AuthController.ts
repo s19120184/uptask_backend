@@ -26,7 +26,7 @@ export class AuthController {
 
       const emailService = new EmailService();
 
-      emailService.sendEmailWithToken(user.email, user.name, token.token);
+      await emailService.sendEmailWithToken(user.email, user.name, token.token);
 
       await Promise.allSettled([user.save(), token.save()]);
 
@@ -100,7 +100,7 @@ export class AuthController {
 
       const emailService = new EmailService();
 
-      emailService.sendEmailWithToken(user.email, user.name, token.token);
+      await emailService.sendEmailWithToken(user.email, user.name, token.token);
 
       await Promise.allSettled([user.save(), token.save()]);
 
@@ -129,7 +129,7 @@ export class AuthController {
 
       const emailService = new EmailService();
 
-      emailService.sendPasswordResetToken(user.email, user.name, token.token);
+      await emailService.sendPasswordResetToken(user.email, user.name, token.token);
 
       res.json("Revisa tu email para instrucciones");
     } catch (error) {
